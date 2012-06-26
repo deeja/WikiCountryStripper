@@ -1,8 +1,13 @@
+Country translation grabber (from wikipedia) tool
+-------------------------------------------------
 This is a Country Name to Some other Language puller / parser / general hack.
+
+There is an example of the output in the countries.xml file
+
 
 PRE-REQ's
 ---------
-1. SQL Server running locally
+1. SQL Server running locally (2008 works well)
 2. A bag of internet
 3. A geographical location where you are actually allowed to go on to Wikipedia
 
@@ -35,6 +40,9 @@ CODING STRATEGY
 ---------------
 
 There probably was one at the start, but I just kept hacking.
+Now it's a hideous mistress who I would rather forget. 
+Still, you know, there are times where you have to get what you need, and the old way it works is not doing it anymore.
+So you play with it a bit more. +2 Stamina / +10 Hideous.
 
 
    
