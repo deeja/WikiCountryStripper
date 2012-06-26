@@ -30,48 +30,50 @@ namespace CountriesPullet
             Bootstrapper.Setup();
             Console.WriteLine("Finished");
 
-            CountryContext countryContext = new CountryContext();
-
-
-            try
+            using (CountryContext countryContext = new CountryContext())
             {
-                IHtmlService service = new HtmlService();
 
 
-                foreach (var site in Sitelist)
+                try
                 {
-                    Console.WriteLine("Loading up page: " + site);
-                    HtmlDocument webpage = service.GetWebPage(site);
-                    Console.WriteLine("Got website");
-                    Console.WriteLine("Strip countries...");
-                    var countries = CountryStripper.GetCountries(webpage);
-                    Console.WriteLine("Stripped");
-                    foreach (Country country in countries)
+                    IHtmlService service = new HtmlService();
+
+
+                    foreach (var site in Sitelist)
                     {
-                        Console.WriteLine(string.Format("Country: {0}", country.EnglishName));
-                        countryContext.Countries.Add(country);
+                        Console.WriteLine("Loading up page: " + site);
+                        HtmlDocument webpage = service.GetWebPage(site);
+                        Console.WriteLine("Got website");
+                        Console.WriteLine("Strip countries...");
+                        var countries = CountryStripper.GetCountries(webpage);
+                        Console.WriteLine("Stripped");
+                        foreach (Country country in countries)
+                        {
+                            Console.WriteLine(string.Format("Country: {0}", country.EnglishName));
+                            countryContext.Countries.Add(country);
+                        }
+
+                        Console.WriteLine("Start Save");
+                        countryContext.SaveChanges();
+                        Console.WriteLine("Saved!");
                     }
-                    
-                    Console.WriteLine("Start Save");
-                    countryContext.SaveChanges();
-                    Console.WriteLine("Saved!");
                 }
-            }
-            catch (Exception ex)
-            {
+                catch (Exception ex)
+                {
+                    Console.WriteLine();
+                    Console.Write(ex);
+                    Console.WriteLine();
+                }
+
+
                 Console.WriteLine();
-                Console.Write(ex);
-                Console.WriteLine();
+                Console.WriteLine("STATS");
+                Console.WriteLine("-------------------");
+                Console.WriteLine("Countries: " + countryContext.Countries.Count());
+                Console.WriteLine("Language Sets: " + countryContext.LanguageSets.Count());
+                Console.WriteLine("Languages: " + countryContext.Languages.Count());
+
             }
-
-            Console.WriteLine();
-            Console.WriteLine("STATS");
-            Console.WriteLine("-------------------");
-            Console.WriteLine("Countries: " + countryContext.Countries.Count());
-            Console.WriteLine("Language Sets: " + countryContext.LanguageSets.Count());
-            Console.WriteLine("Languages: " + countryContext.Languages.Count());
-
-
             Console.WriteLine("Press enter to close");
             Console.ReadLine();
         }

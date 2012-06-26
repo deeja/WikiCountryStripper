@@ -1,0 +1,43 @@
+This is a Country Name to Some other Language puller / parser / general hack.
+
+PRE-REQ's
+---------
+1. SQL Server running locally
+2. A bag of internet
+3. A geographical location where you are actually allowed to go on to Wikipedia
+
+
+HOW IT WORKS
+------------
+
+1. This bag of cogs goes over to Wikipedia's "List of country names in various languages" pages
+2. Runs the HTML through some a HTML agility course, knocking out some of the useful info.
+3. Follows a maze of code until out comes some entities in your Sql Server
+
+
+DATASTRUCTURE
+-------------
+
+Country (1 - Many) Variant (1 - Many) Language
+
+Take Cuba as a simple example:
+
+Cuba - this is the "Country.Name" (usually English or French).  
+
+Variant of Cuba with 3+ languages:
+Kuba (Acehnese, Afrikaans, ... trim ... , Swedish)
+
+Variant of Cuba with 1 languages: 
+Ciuba (Scots Gaelic)   
+
+
+CODING STRATEGY
+---------------
+
+There probably was one at the start, but I just kept hacking.
+
+
+   
+  
+
+    

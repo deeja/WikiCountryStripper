@@ -55,7 +55,7 @@ namespace Tests
         public void IntegrationOfTheTwo()
         {
             IEnumerable<string> sets = CountryStripper.GetCountrySets(EvenMoreComplicated);
-            IEnumerable<NameLanguageSet> nameLanguageSets = sets.Select(CountryStripper.GenerateLanguageSets);
+            IEnumerable<Variant> nameLanguageSets = sets.Select(CountryStripper.GenerateLanguageSets);
             Assert.AreEqual(12,nameLanguageSets.Count());
         }
          

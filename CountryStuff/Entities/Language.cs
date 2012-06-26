@@ -6,7 +6,7 @@ namespace CountryStuff.Entities
 {
     public class Language: DbItem
     {
-        public ICollection<NameLanguageSet> LanguageSets { get; set; }
+        public ICollection<Variant> LanguageSets { get; set; }
         public string Name { get; set; }
     }
 }

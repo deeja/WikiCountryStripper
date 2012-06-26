@@ -17,7 +17,7 @@ namespace Tests
         [Test]
         public void BreakNameLaguages_CorrectName()
         {
-            NameLanguageSet set = NameSingleLanguageEntryExample.GenerateLanguageSets();
+            Variant set = NameSingleLanguageEntryExample.GenerateLanguageSets();
 
             Assert.AreEqual("Albanien", set.Name);
         }
@@ -25,28 +25,28 @@ namespace Tests
         [Test]
         public void BreakNameLanguages_ReturnsOneLanguage()
         {
-            NameLanguageSet set = NameSingleLanguageEntryExample.GenerateLanguageSets();
+            Variant set = NameSingleLanguageEntryExample.GenerateLanguageSets();
             Assert.AreEqual(1, set.Languages.Count());
         }
 
         [Test]
         public void BreakNameLanguages_ReturnsOneCorrectlyNamedLanguage()
         {
-            NameLanguageSet set = NameSingleLanguageEntryExample.GenerateLanguageSets();
+            Variant set = NameSingleLanguageEntryExample.GenerateLanguageSets();
             Assert.AreEqual("Alemannic", set.Languages.First().Name);
         }
 
         [Test]
         public void BreakNameLanguages_ReturnsSevenLanguages()
         {
-            NameLanguageSet set = NameMultipleLanguageEntryExample.GenerateLanguageSets();
+            Variant set = NameMultipleLanguageEntryExample.GenerateLanguageSets();
             Assert.AreEqual(7, set.Languages.Count());
         }
 
         [Test]
         public void BreakNameLanguages_ContainsCorrectName()
         {
-            NameLanguageSet set = NameMultipleLanguageEntryExample.GenerateLanguageSets();
+            Variant set = NameMultipleLanguageEntryExample.GenerateLanguageSets();
             Assert.IsTrue(set.Languages.Any(x => x.Name == "Austro-Bavarian"));
         }
     }

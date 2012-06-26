@@ -18,13 +18,13 @@ namespace CountryStuff
         /// </summary>
         /// <param name="toParse"></param>
         /// <returns></returns>
-        internal static NameLanguageSet GenerateLanguageSets(this string toParse)
+        internal static Variant GenerateLanguageSets(this string toParse)
         {
             int firstBracket = toParse.IndexOf("(", System.StringComparison.Ordinal);
             string name = toParse.Substring(0, firstBracket).Trim();
             string languageString = toParse.Substring(firstBracket).Trim(new[]{'(',')'});
             IEnumerable<string> languages = languageString.Split(',').Select(x => x.Trim());
-            return new NameLanguageSet(){Name = name, Languages = GetLanguages(languages)};
+            return new Variant(){Name = name, Languages = GetLanguages(languages)};
         }
 
         
