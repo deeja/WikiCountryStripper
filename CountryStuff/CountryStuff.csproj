@@ -51,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Country.cs" />
+    <Compile Include="Entities\Country.cs" />
     <Compile Include="CountryStripper.cs" />
+    <Compile Include="Entities\DbItem.cs" />
     <Compile Include="HtmlService.cs" />
     <Compile Include="IHtmlService.cs" />
     <Compile Include="KindOfFakeHtmlService.cs" />
-    <Compile Include="NameLanguageSet.cs" />
+    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\NameLanguageSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
