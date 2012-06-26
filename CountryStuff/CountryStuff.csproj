@@ -55,6 +55,7 @@
     <Compile Include="CountryStripper.cs" />
     <Compile Include="HtmlService.cs" />
     <Compile Include="IHtmlService.cs" />
+    <Compile Include="KindOfFakeHtmlService.cs" />
     <Compile Include="NameLanguageSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
