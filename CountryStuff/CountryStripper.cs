@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using CountryStuff.Entities;
 using HtmlAgilityPack;
 
 namespace CountryStuff
 {
     public static class CountryStripper
     {
+        private static Dictionary<int, Language> _generatedLanguages = new Dictionary<int, Language>();
+
         static readonly Regex LanguageSetMatcher = new Regex(@"(.*?\(.*?\))[,]{0,1}");
 
         /// <summary>
@@ -21,7 +24,39 @@ namespace CountryStuff
             string name = toParse.Substring(0, firstBracket).Trim();
             string languageString = toParse.Substring(firstBracket).Trim(new[]{'(',')'});
             IEnumerable<string> languages = languageString.Split(',').Select(x => x.Trim());
-            return new NameLanguageSet(){Name = name, Languages = languages.Select(s => new Language{Name = s}).ToList()};
+            return new NameLanguageSet(){Name = name, Languages = GetLanguages(languages)};
+        }
+
+        
+
+        private static List<Language> GetLanguages(IEnumerable<string> languageStrings)
+        {
+           
+
+            List<Language> list = new List<Language>();
+            foreach (string name in languageStrings)
+            {
+                int hashcode = name.GetLanguageHashCode();
+
+                if (_generatedLanguages.ContainsKey(hashcode))
+                {
+                    Console.WriteLine("Found language - Adding old: "+ name);
+                    list.Add(_generatedLanguages[hashcode]);
+                }
+                else
+                {
+                    Console.WriteLine("Didnt find - Adding new: " + name);
+                    var lang = new Language() {Name = name};
+                    list.Add(lang);
+                    _generatedLanguages.Add(hashcode,lang);
+                }
+            }
+            return list;
+        }
+
+        public static int GetLanguageHashCode(this string name)
+        {
+            return name.ToLowerInvariant().Trim().GetHashCode();
         }
 
         /// <summary>
@@ -73,12 +108,5 @@ namespace CountryStuff
                                      LanguageSets = x.GetLanguageSetText().GetCountrySets().Select(GenerateLanguageSets).ToList()
                                  });
         }
-    }
-
-    public class CountryContext: DbContext
-    {
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<NameLanguageSet> LanguageSets { get; set; }
-        public DbSet<Language> Languages { get; set; }
     }
 }

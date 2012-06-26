@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Entities\CountryContext.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="CountryStripper.cs" />
     <Compile Include="Entities\DbItem.cs" />

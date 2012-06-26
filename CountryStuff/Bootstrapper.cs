@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿#region
+
 using System.Data.Entity;
 using System.Linq;
+using CountryStuff.Entities;
+
+#endregion
 
 namespace CountryStuff
 {
@@ -10,10 +14,9 @@ namespace CountryStuff
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<CountryContext>());
             CountryContext context = new CountryContext();
-            //just load up somthing to initialise
 
-            List<Country> coun = context.Countries.ToList();
-          }
-         
+            //just load up somthing to initialise
+            context.Countries.ToList();
+        }
     }
 }

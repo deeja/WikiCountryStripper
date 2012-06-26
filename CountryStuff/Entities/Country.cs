@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CountryStuff
+namespace CountryStuff.Entities
 {
     public class Country: DbItem
     {

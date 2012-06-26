@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CountryStuff;
+using CountryStuff.Entities;
 using HtmlAgilityPack;
 using NUnit.Framework;
 using System.Linq;

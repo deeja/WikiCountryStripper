@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CountryStuff;
+using CountryStuff.Entities;
 using NUnit.Framework;
 
 namespace Tests

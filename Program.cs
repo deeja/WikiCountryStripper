@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using CountryStuff;
+using CountryStuff.Entities;
 using HtmlAgilityPack;
 
 #endregion
@@ -50,7 +51,7 @@ namespace CountriesPullet
                         Console.WriteLine(string.Format("Country: {0}", country.EnglishName));
                         countryContext.Countries.Add(country);
                     }
-
+                    
                     Console.WriteLine("Start Save");
                     countryContext.SaveChanges();
                     Console.WriteLine("Saved!");
