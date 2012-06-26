@@ -105,7 +105,7 @@ namespace CountryStuff
             return document.GetLanguageTables().SelectMany(GetLanguageRows).Select(x => new Country()
                                  {
                                      EnglishName = x.GetLanguageName(),
-                                     LanguageSets = x.GetLanguageSetText().GetCountrySets().Select(GenerateLanguageSets).ToList()
+                                     Variants = x.GetLanguageSetText().GetCountrySets().Select(GenerateLanguageSets).ToList()
                                  });
         }
     }

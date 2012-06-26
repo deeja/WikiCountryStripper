@@ -72,7 +72,6 @@ namespace CountriesPullet
                 Console.WriteLine("Countries: " + countryContext.Countries.Count());
                 Console.WriteLine("Language Sets: " + countryContext.LanguageSets.Count());
                 Console.WriteLine("Languages: " + countryContext.Languages.Count());
-
             }
             Console.WriteLine("Press enter to close");
             Console.ReadLine();
